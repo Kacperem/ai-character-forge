@@ -85,11 +85,11 @@ export const ChatHeader = ({ character }: ChatHeaderProps) => {
             <DropdownMenuItem
               onClick={() => router.push(`/character/${character.id}`)}
             >
-              <Edit className="w-4 w-4 mr-2" />
+              <Edit className="w-4 h-4 mr-2" />
               Edit
             </DropdownMenuItem>
             <DropdownMenuItem onClick={onDelete}>
-              <Trash className="w-4 w-4 mr-2" />
+              <Trash className="w-4 h-4 mr-2" />
               Delete
             </DropdownMenuItem>
           </DropdownMenuContent>
