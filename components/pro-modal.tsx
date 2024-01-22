@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -20,6 +20,11 @@ export const ProModal = () => {
   const { toast } = useToast();
 
   const [loading, setLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, [])
 
   const onSubscribe = async () => {
     try {
@@ -38,6 +43,10 @@ export const ProModal = () => {
     }
   };
 
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
       <DialogContent>
@@ -52,7 +61,7 @@ export const ProModal = () => {
         <Separator />
         <div className="flex justify-between">
           <p className="text-2xl font-medium">
-            $9
+            zł9
             <span className="text-sm font-normal">.99 / mo</span>
           </p>
           <Button disabled={loading} onClick={onSubscribe} variant="premium">
